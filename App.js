@@ -1,38 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { Provider } from 'react-redux'
+import React, { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import { Surface } from 'react-native-paper';
+import { Provider } from 'react-redux';
 import { NavigationNativeContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Store from './store/data-context'
-import store from './src/store/Store'
-import { setUserData } from './src/actions/plans'
-import HomeView from './src/components/Home/HomeView'
-import PlanView from './src/containers/Plan'
+// redux
+import { setUserData } from './src/actions/userdata'
+import store from './src/store/Store';
+// containers / views
+import HomeView from './src/containers/Home';
+import ProgramView from './src/containers/ProgramView';
+import FilePickerView from './src/containers/FilePickerView';
+// lib
+import storage from './src/storage/storage'
 
 const Stack = createStackNavigator();
 
-
 export default function App() {
-  const [plans, setPlans] = useState({})
+  // load state from storage
   useEffect(() => {
-    fetch("https://bf154748-abeb-4ba3-a20d-eb5de6feceaa.mock.pstmn.io/userdata")
-      .then(res => res.json())
-      .then(resJson => {
-        store.dispatch(setUserData(resJson))
+    storage
+      .getUserData()
+      .then(userData => {
+        store.dispatch(setUserData(userData))
       })
       .catch(err => console.error(err))
   }, [])
 
-
   return (
-    <Provider store={store}>
-      <NavigationNativeContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeView} />
-          <Stack.Screen name="PlanView" component={PlanView} />
-        </Stack.Navigator>
-      </NavigationNativeContainer>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <NavigationNativeContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeView} />
+            <Stack.Screen name="ProgramView" component={ProgramView} />
+          </Stack.Navigator>
+        </NavigationNativeContainer>
+        <Surface style={styles.button}>
+          <FilePickerView />
+        </Surface>
+      </Provider>
+    </>
   );
-
 }
 
+
+const styles = StyleSheet.create({
+  surface: {
+    margin: 4,
+    elevation: 10
+  }
+});

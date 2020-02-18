@@ -1,73 +1,75 @@
 {
-  "plans": {
-    "id": 1,
-    "uuid": "0000-11111111-00-11",
-    "details": [
-      {
-        "name": "Squat",
-        "date": "some date",
-        "status": "NOT_STARTED",
-        "completed": false,
-        "sets": [
-          { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-        ]
-      },
-      {
-        "name": "Bench Press",
-        "date": "some date",
-        "status": "NOT_STARTED",
-        "completed": false,
-        "sets": [
-          { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-        ]
-      },
-      {
-        "name": "Deadlift",
-        "date": "some date",
-        "status": "NOT_STARTED",
-        "completed": false,
-        "sets": [
-          { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-        ]
-      },
-      {
-        "name": "Snatch",
-        "date": "some date",
-        "status": "NOT_STARTED",
-        "completed": false,
-        "sets": [
-          { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-        ]
-      },
-      {
-        "name": "Clean and Jerk",
-        "date": "some date",
-        "status": "NOT_STARTED",
-        "completed": false,
-        "sets": [
-          { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-          { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-        ]
-      }
-    ]
-  }
+  "plans": [
+    {
+      "id": 1,
+      "uuid": "0000-11111111-00-11",
+      "details": [
+        {
+          "name": "Squat",
+          "date": "some date",
+          "status": "NOT_STARTED",
+          "completed": false,
+          "sets": [
+            { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
+          ]
+        },
+        {
+          "name": "Bench Press",
+          "date": "some date",
+          "status": "NOT_STARTED",
+          "completed": false,
+          "sets": [
+            { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
+          ]
+        },
+        {
+          "name": "Deadlift",
+          "date": "some date",
+          "status": "NOT_STARTED",
+          "completed": false,
+          "sets": [
+            { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
+          ]
+        },
+        {
+          "name": "Snatch",
+          "date": "some date",
+          "status": "NOT_STARTED",
+          "completed": false,
+          "sets": [
+            { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
+          ]
+        },
+        {
+          "name": "Clean and Jerk",
+          "date": "some date",
+          "status": "NOT_STARTED",
+          "completed": false,
+          "sets": [
+            { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
+            { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
+          ]
+        }
+      ]
+    }
+  ]
 }

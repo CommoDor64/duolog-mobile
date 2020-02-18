@@ -1,8 +1,9 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { logger } from './middleware'
-import plans from '../reducers/plans'
+import reducers from '../reducers/plans'
+
 const store = createStore(
-    plans,
+    reducers.plans,
     applyMiddleware(logger)
 )
 
