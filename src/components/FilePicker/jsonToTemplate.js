@@ -32,7 +32,7 @@ function createProgram(id, uuid, trainingDays) {
         trainingDays
     })
 }
-// e.g "70% 3*5"
+// e.g "70% 3*5" 
 const reGroupedExerciseSet =
     /([1-9][0-9]?|100)([\%])[ ]?([1-9][0-9]|[1-9])[\*]([1-9][0-9]|[1-9])/
 
