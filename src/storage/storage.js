@@ -1,20 +1,27 @@
 import { AsyncStorage } from 'react-native';
 import userDataModel from './userdata.json';
 import store from '../store/Store'
-const USER_DATA = "userData"
+export const USER_DATA = "userData"
 
 async function init() {
     try {
         const userData = await AsyncStorage.getItem(USER_DATA)
         if (userData === null) {
             await AsyncStorage.setItem(USER_DATA, JSON.stringify(userDataModel))
-            console.log(`creating ${USER_DATA} in storage`)
+
         }
     } catch (err) {
         console.error(err)
     }
 }
 
+async function wipeUserData() {
+    try {
+        await AsyncStorage.setItem(USER_DATA, JSON.stringify(userDataModel))
+    } catch (err) {
+
+    }
+}
 async function getUserData() {
     try {
         const userData = JSON.parse(await AsyncStorage.getItem(USER_DATA))
@@ -46,5 +53,6 @@ export default {
     init,
     setUserData,
     getUserData,
-    appendProgram
+    appendProgram,
+    wipeUserData
 }

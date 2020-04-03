@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
-import { toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
-import Program from '../components/Program/Program'
+import { setCurrentTrainingDay, toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
+import TrainingDays from '../components/Program/TrainingDays'
 import storage from '../storage/storage'
 const mapStateToProps = (state) => {
     const { programs, currentProgramIndex, currentTrainingDayIndex } = state
     return ({
-        trainingDay: programs[currentProgramIndex].trainingDays[currentTrainingDayIndex],
+        programs,
+        trainingDays: programs[currentProgramIndex].trainingDays,
         currentProgramIndex,
         currentTrainingDayIndex
     })
@@ -14,12 +15,15 @@ const mapDispatchToProps = (dispatch) => ({
     toggleCompletedExerciseSet: (programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex) => {
         dispatch(toggleCompletedExerciseSet(programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex))
         dispatch(setExerciseStatus(programIndex, trainingDayIndex, exerciseIndex))
+    },
+    setCurrentTrainingDay: (currentTrainingDayIndex) => {
+        dispatch(setCurrentTrainingDay(currentTrainingDayIndex))
     }
 })
 
-const ProgramView = connect(
+const TrainingDaysView = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Program)
+)(TrainingDays)
 
-export default ProgramView
+export default TrainingDaysView

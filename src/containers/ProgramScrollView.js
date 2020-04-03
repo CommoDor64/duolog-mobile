@@ -1,25 +1,23 @@
 import { connect } from 'react-redux'
-import { toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
-import Program from '../components/Program/Program'
+import { setCurrentProgram, toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
+import ProgramScroll from '../components/Home/ProgramScroll'
 import storage from '../storage/storage'
 const mapStateToProps = (state) => {
-    const { programs, currentProgramIndex, currentTrainingDayIndex } = state
-    return ({
-        trainingDay: programs[currentProgramIndex].trainingDays[currentTrainingDayIndex],
-        currentProgramIndex,
-        currentTrainingDayIndex
-    })
+    return ({ programs: state.programs })
 }
 const mapDispatchToProps = (dispatch) => ({
     toggleCompletedExerciseSet: (programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex) => {
         dispatch(toggleCompletedExerciseSet(programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex))
         dispatch(setExerciseStatus(programIndex, trainingDayIndex, exerciseIndex))
+    },
+    setCurrentProgram: (programIndex) => {
+        dispatch(setCurrentProgram(programIndex))
     }
 })
 
-const ProgramView = connect(
+const ProgramScrollView = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Program)
+)(ProgramScroll)
 
-export default ProgramView
+export default ProgramScrollView

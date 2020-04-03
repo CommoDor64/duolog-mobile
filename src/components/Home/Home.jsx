@@ -7,7 +7,7 @@ function Home(props) {
     return (
         < View style={styles.container} >
             <SafeAreaView>
-                <ProgramScroll programs={props.userData.programs} navigation={props.navigation} />
+                <ProgramScroll navigation={props.navigation} />
             </SafeAreaView>
         </View >
     )

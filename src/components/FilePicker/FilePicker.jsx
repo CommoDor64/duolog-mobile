@@ -14,8 +14,9 @@ function FilePicker(props) {
                 return
             }
             const csv = await FileSystem.readAsStringAsync(uri)
-            const exerciseTemplate = jsonToTemplate(Papa.parse(csv).data)
-            props.appendProgram(exerciseTemplate)
+
+            const trainingTemplate = jsonToTemplate(Papa.parse(csv).data)
+            props.appendProgram(trainingTemplate)
         } catch (err) {
             console.error(err)
         }
