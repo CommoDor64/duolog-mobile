@@ -9,13 +9,10 @@ function ProgramScroll(props) {
             {props.programs.map(({ name }, programIndex) =>
                 (
                     <TouchableRipple
-                        rippleColor="rgba(0, 0, 0, .32)"
-                        underlayColor="rgba(0, 0, 0, .32)"
                         onPress={() => {
                             props.setCurrentProgram(programIndex)
-                            props.navigation.navigate('TrainingDaysView')
+                            props.navigation.navigate('TrainingDaysView', { programIndex })
                         }}
-
                     >
                         <Surface
                             style={styles.item}

@@ -92,10 +92,9 @@ function plans(state = initialState, action) {
                 })
             }
         case TOGGLE_COMPLETED_EXERCISE_SET:
-
             {
                 let programs = [...state.programs]
-                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
+                let { exercises } = programs[state.currentProgramIndex].trainingDays[state.currentTrainingDayIndex]
                 exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed =
                     !exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed
 
@@ -107,7 +106,7 @@ function plans(state = initialState, action) {
         case SET_EXERCISE_STATUS:
             {
                 let programs = [...state.programs]
-                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
+                let { exercises } = programs[state.currentProgramIndex].trainingDays[state.currentTrainingDayIndex]
                 const setsNumber = exercises[action.exerciseIndex].sets.length
                 const completedSetsNumber = exercises[action.exerciseIndex].sets.filter(({ completed }) => !completed).length
 

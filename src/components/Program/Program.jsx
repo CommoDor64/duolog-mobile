@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Dimensions, FlatList, SafeAreaView, StyleSheet, ScrollView, View } from 'react-native';
-import TrainingDay from './TrainingDays'
+import React, { useEffect, useState } from 'react';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+
+// components
 import Exercise from './Exercise'
-import { exerciseStatus } from '../../constants/contants'
-import { List } from 'react-native-paper';
+// misc
 import storage from '../../storage/storage';
+
 function Program(props) {
     const { currentProgramIndex, currentTrainingDayIndex } = props
     const [trainingDay, setTrainingDay] = useState(props.trainingDay)

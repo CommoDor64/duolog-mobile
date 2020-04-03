@@ -6,10 +6,6 @@ const mapStateToProps = (state) => {
     return ({ programs: state.programs })
 }
 const mapDispatchToProps = (dispatch) => ({
-    toggleCompletedExerciseSet: (programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex) => {
-        dispatch(toggleCompletedExerciseSet(programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex))
-        dispatch(setExerciseStatus(programIndex, trainingDayIndex, exerciseIndex))
-    },
     setCurrentProgram: (programIndex) => {
         dispatch(setCurrentProgram(programIndex))
     }

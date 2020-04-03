@@ -11,9 +11,6 @@ import { exerciseStatus } from '../../constants/contants'
 function TrainingDays(props) {
 
     const { currentProgramIndex, trainingDays } = props
-    // let { day, exercises } = props.trainingDay
-    // const toggleCompletedExerciseSet = (exerciseSetIndex) =>
-    //     props.toggleCompletedExerciseSet(exerciseIndex, exerciseSetIndex)
     return (
         <View>
             {trainingDays.map((trainingDay, trainingDayIndex) => (
@@ -24,10 +21,9 @@ function TrainingDays(props) {
                         key={`trainingDay-item-${currentProgramIndex}-${trainingDayIndex}`}
                         title={trainingDay.day}
                         description={exerciseStatus[trainingDay.status].text}
-                        // right={() => (<Icon name="keyboard-arrow-right" size={30} />)}
                         onPress={() => {
                             props.setCurrentTrainingDay(trainingDayIndex)
-                            props.navigation.navigate('ProgramView')
+                            props.navigation.navigate('ProgramView', { trainingDayIndex })
                         }}
                     />
                 </Surface>
