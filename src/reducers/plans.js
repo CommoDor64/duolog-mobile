@@ -1,4 +1,7 @@
 import {
+    SET_CURRENT_PROGRAM,
+    SET_CURRENT_TRAINING_DAY,
+    SET_CURRENT_EXERCISE,
     SET_USER_DATA,
     TOGGLE_COMPLETED_EXERCISE_SET,
     SET_EXERCISE_STATUS,
@@ -35,6 +38,9 @@ import { exerciseStatus } from '../constants/contants'
 
 
 const initialState = {
+    currentProgramIndex: 0,
+    currentTrainingDayIndex: 0,
+    currentExerciseIndex: 0,
     programs: [
 
     ]
@@ -56,8 +62,26 @@ function config(state = initialStateConfig, action) {
 
 function plans(state = initialState, action) {
     switch (action.type) {
+        case SET_CURRENT_PROGRAM:
+            return ({
+                ...state,
+                currentProgramIndex: action.currentProgramIndex
+            })
+        case SET_CURRENT_TRAINING_DAY:
+            return ({
+                ...state,
+                currentTrainingDayIndex: action.currentTrainingDayIndex
+            })
+        case SET_CURRENT_EXERCISE:
+            return ({
+                ...state,
+                currentExerciseIndex: action.currentExerciseIndex
+            })
         case SET_USER_DATA:
-            return (action.userData)
+            return ({
+                ...state,
+                ...action.userData
+            })
         case APPEND_PROGRAM:
             {
                 let programs = [...state.programs]
@@ -68,9 +92,10 @@ function plans(state = initialState, action) {
                 })
             }
         case TOGGLE_COMPLETED_EXERCISE_SET:
+
             {
                 let programs = [...state.programs]
-                let exercises = programs[action.programIndex].exercises
+                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
                 exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed =
                     !exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed
 
@@ -82,7 +107,7 @@ function plans(state = initialState, action) {
         case SET_EXERCISE_STATUS:
             {
                 let programs = [...state.programs]
-                let exercises = programs[action.programIndex].exercises
+                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
                 const setsNumber = exercises[action.exerciseIndex].sets.length
                 const completedSetsNumber = exercises[action.exerciseIndex].sets.filter(({ completed }) => !completed).length
 

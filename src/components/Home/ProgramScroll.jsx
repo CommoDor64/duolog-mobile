@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { List, Surface } from 'react-native-paper';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { List, Surface, TouchableRipple } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 function ProgramScroll(props) {
     return (
-        <View>
+        <SafeAreaView>
             {props.programs.map(({ name }, programIndex) =>
-                (<Surface style={styles.item}>
-                    <List.Item
-                        key={`planlist-item-${name}-${programIndex}`}
-                        title={"plan" + programIndex}
-                        right={() => (<Icon name="keyboard-arrow-right" size={30} />)}
-                        onPress={() => props.navigation.navigate('ProgramView', { programIndex: programIndex })}
-                    />
-                </Surface>))}
-        </View>
+                (
+                    <TouchableRipple
+                        rippleColor="rgba(0, 0, 0, .32)"
+                        underlayColor="rgba(0, 0, 0, .32)"
+                        onPress={() => {
+                            props.setCurrentProgram(programIndex)
+                            props.navigation.navigate('TrainingDaysView')
+                        }}
+
+                    >
+                        <Surface
+                            style={styles.item}
+                        >
+                            <List.Item
+                                key={`planlist-item-${name}-${programIndex}`}
+                                title={"plan" + programIndex}
+                                right={() => (<Icon name="keyboard-arrow-right" size={30} />)}
+
+                            />
+                        </Surface>
+                    </TouchableRipple>))}
+        </SafeAreaView>
+
     );
 }
 
