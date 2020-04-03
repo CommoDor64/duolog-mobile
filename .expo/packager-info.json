@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 1250,
+  "expoServerNgrokUrl": "https://a7-x7s.commodor64.duolog.exp.direct",
+  "packagerNgrokUrl": "https://packager.a7-x7s.commodor64.duolog.exp.direct",
+  "ngrokPid": 1262,
   "webpackServerPort": null
 }
