@@ -8,7 +8,6 @@ import {
     APPEND_PROGRAM
 } from '../actions/userdata'
 
-import { SET_SCREEN_HEIGHT } from '../actions/config'
 import { exerciseStatus } from '../constants/contants'
 
 //  {
@@ -46,19 +45,7 @@ const initialState = {
     ]
 }
 
-const initialStateConfig = {
-    screenHeight: 0
-}
 
-function config(state = initialStateConfig, action) {
-    switch (action.type) {
-        case SET_SCREEN_HEIGHT:
-            return ({
-                screenHeight: action.screenHeight
-            })
-    }
-    return (state)
-}
 
 function plans(state = initialState, action) {
     switch (action.type) {
@@ -92,13 +79,11 @@ function plans(state = initialState, action) {
                 })
             }
         case TOGGLE_COMPLETED_EXERCISE_SET:
-
             {
                 let programs = [...state.programs]
-                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
+                let { exercises } = programs[state.currentProgramIndex].trainingDays[state.currentTrainingDayIndex]
                 exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed =
                     !exercises[action.exerciseIndex].sets[action.exerciseSetIndex].completed
-
                 return ({
                     ...state,
                     programs
@@ -107,10 +92,9 @@ function plans(state = initialState, action) {
         case SET_EXERCISE_STATUS:
             {
                 let programs = [...state.programs]
-                let { exercises } = programs[action.programIndex].trainingDays[action.trainingDayIndex]
+                let { exercises } = programs[state.currentProgramIndex].trainingDays[state.currentTrainingDayIndex]
                 const setsNumber = exercises[action.exerciseIndex].sets.length
                 const completedSetsNumber = exercises[action.exerciseIndex].sets.filter(({ completed }) => !completed).length
-
                 switch (completedSetsNumber) {
                     case 0:
                         exercises[action.exerciseIndex].status = exerciseStatus.COMPLETED.name
@@ -131,4 +115,4 @@ function plans(state = initialState, action) {
     return state;
 }
 
-export default { plans, config }
+export default { plans }

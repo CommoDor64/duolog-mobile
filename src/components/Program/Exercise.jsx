@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import { DataTable, List, Surface, Checkbox, TextInput } from 'react-native-paper';
 import { exerciseStatus } from '../../constants/contants'
 
@@ -9,13 +9,8 @@ function Exercise(props) {
     const [status, setStatus] = useState(props.exercise.status)
     const [expanded, setExpanded] = useState(props.expanded);
     const [notes, setNotes] = useState('')
-    const right = ({ color }) =>
-        <View>
-            <Text>{exerciseStatus[status].text}</Text>
-            <Text>{exercise.sets.length + "sets"}</Text>
-        </View>
     return (
-        <Surface style={styles.item} >
+        <Surface style={styles.item}>
             <List.Accordion
                 title={exercise.name}
                 description={exerciseStatus[status].text}

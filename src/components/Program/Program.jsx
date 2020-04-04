@@ -1,50 +1,40 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Dimensions, FlatList, SafeAreaView, StyleSheet, ScrollView, View } from 'react-native';
-import TrainingDay from './TrainingDays'
-import Exercise from './Exercise'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { List, Surface } from 'react-native-paper'
 import { exerciseStatus } from '../../constants/contants'
-import { List } from 'react-native-paper';
-import storage from '../../storage/storage';
-function Program(props) {
-    const { currentProgramIndex, currentTrainingDayIndex } = props
-    const [trainingDay, setTrainingDay] = useState(props.trainingDay)
-    useEffect(() => {
-        return () => { storage.setUserData() }
-    }, [])
-    const TrainingDayRender = ({ item: exercise, index: exerciseIndex }) =>
-        <Exercise
-            key={`exercise-${exercise}-${exerciseIndex}`}
-            exerciseIndex={exerciseIndex}
-            exercise={exercise}
-            expanded={false}
-            toggleCompletedExerciseSet={(exerciseSetIndex) => {
-                props.toggleCompletedExerciseSet(
-                    currentProgramIndex,
-                    currentTrainingDayIndex,
-                    exerciseIndex,
-                    exerciseSetIndex)
-            }}
-            setExerciseStatus={props.setExerciseStatus}
-        />
+
+function TrainingDays(props) {
+    const { currentProgramIndex, trainingDays } = props
 
     return (
-        <SafeAreaView style={styles.container}>
-            <FlatList
-                data={trainingDay.exercises}
-                renderItem={TrainingDayRender}
-                keyExtractor={(item, index) => `trainingDay-${Date.now()}-${item.name}-${index}`}
-            />
-        </SafeAreaView>
+        <View>
+            {trainingDays.map((trainingDay, trainingDayIndex) => (
+                <Surface style={styles.item}>
+                    <List.Item
+                        key={`trainingDay-item-${currentProgramIndex}-${trainingDayIndex}`}
+                        title={trainingDay.day}
+                        description={exerciseStatus[trainingDay.status].text}
+                        onPress={() => {
+                            props.setCurrentTrainingDay(trainingDayIndex)
+                            props.navigation.navigate('TrainingDayView', { trainingDayIndex })
+                        }}
+                    />
+                </Surface>
+            ))}
+        </View>
     );
 }
 
+
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 0,
-    },
     text: {
         textAlign: "center",
+    },
+    item: {
+        margin: 8,
+        elevation: 4,
+        borderRadius: 8
     }
 });
 
-export default Program
+export default TrainingDays
