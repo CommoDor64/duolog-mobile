@@ -9,11 +9,6 @@ function Exercise(props) {
     const [status, setStatus] = useState(props.exercise.status)
     const [expanded, setExpanded] = useState(props.expanded);
     const [notes, setNotes] = useState('')
-    const right = ({ color }) =>
-        <View>
-            <Text>{exerciseStatus[status].text}</Text>
-            <Text>{exercise.sets.length + "sets"}</Text>
-        </View>
     return (
         <Surface style={styles.item} >
             <List.Accordion

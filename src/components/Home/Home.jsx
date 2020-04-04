@@ -1,15 +1,15 @@
 
-import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import ProgramScroll from './ProgramScroll';
 
 function Home(props) {
     return (
-        < View style={styles.container} >
+        <View style={styles.container}>
             <SafeAreaView>
                 <ProgramScroll navigation={props.navigation} />
             </SafeAreaView>
-        </View >
+        </View>
     )
 }
 

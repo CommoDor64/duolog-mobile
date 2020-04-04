@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import { setCurrentProgram, toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
+import { setCurrentProgram } from '../actions/userdata'
 import ProgramScroll from '../components/Home/ProgramScroll'
-import storage from '../storage/storage'
 const mapStateToProps = (state) => {
     return ({ programs: state.programs })
 }

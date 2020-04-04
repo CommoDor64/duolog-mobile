@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { setCurrentTrainingDay, toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
 import TrainingDays from '../components/Program/TrainingDays'
-import storage from '../storage/storage'
+
 const mapStateToProps = (state) => {
     const { programs, currentProgramIndex, currentTrainingDayIndex } = state
     return ({

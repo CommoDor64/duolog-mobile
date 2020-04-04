@@ -8,15 +8,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 // redux
 import { setUserData } from './src/actions/userdata'
 import store from './src/store/Store';
-// containers / views
-import ProgramView from './src/containers/ProgramView';
-import ProgramScrollView from './src/containers/ProgramScrollView';
-import FilePickerView from './src/containers/FilePickerView';
-import TrainingDaysView from './src/containers/TrainingDaysView';
+// containers 
+import ProgramView from './src/containers/ProgramContainer';
+import ProgramScrollView from './src/containers/ProgramScrollContainer';
+import FilePickerView from './src/containers/FilePickerContainer';
+import TrainingDaysView from './src/containers/TrainingDaysContainer';
 import Log from './src/components/Log/Log'
 // lib
 import storage from './src/storage/storage'
 
+// stack navigator for mail application flow
 const Stack = createStackNavigator();
 const StackComponent = () =>
   <Stack.Navigator initialRouteName="Home">
@@ -24,6 +25,7 @@ const StackComponent = () =>
     <Stack.Screen name="TrainingDaysView" component={TrainingDaysView} />
     <Stack.Screen name="ProgramView" component={ProgramView} />
   </Stack.Navigator>
+// tab navigator between main flow and Log print
 const Tab = createBottomTabNavigator();
 export default function App() {
 
