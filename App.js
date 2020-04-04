@@ -5,16 +5,16 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-// redux
+
 import { setUserData } from './src/actions/userdata'
 import store from './src/store/Store';
-// containers 
-import ProgramView from './src/containers/ProgramContainer';
+
+import TrainingDayView from './src/containers/TrainingDayContainer';
 import ProgramScrollView from './src/containers/ProgramScrollContainer';
 import FilePickerView from './src/containers/FilePickerContainer';
-import TrainingDaysView from './src/containers/TrainingDaysContainer';
+import ProgramView from './src/containers/ProgramContainer';
 import Log from './src/components/Log/Log'
-// lib
+
 import storage from './src/storage/storage'
 
 // stack navigator for mail application flow
@@ -22,8 +22,8 @@ const Stack = createStackNavigator();
 const StackComponent = () =>
   <Stack.Navigator initialRouteName="Home">
     <Stack.Screen name="ProgramScrollView" component={ProgramScrollView} />
-    <Stack.Screen name="TrainingDaysView" component={TrainingDaysView} />
     <Stack.Screen name="ProgramView" component={ProgramView} />
+    <Stack.Screen name="TrainingDayView" component={TrainingDayView} />
   </Stack.Navigator>
 // tab navigator between main flow and Log print
 const Tab = createBottomTabNavigator();

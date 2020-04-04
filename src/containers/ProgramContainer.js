@@ -1,24 +1,29 @@
 import { connect } from 'react-redux'
-import { toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
-import TrainingDay from '../components/Program/Program'
+import { setCurrentTrainingDay, toggleCompletedExerciseSet, setExerciseStatus } from '../actions/userdata'
+import Program from '../components/Program/Program'
+
 const mapStateToProps = (state) => {
     const { programs, currentProgramIndex, currentTrainingDayIndex } = state
     return ({
-        trainingDay: programs[currentProgramIndex].trainingDays[currentTrainingDayIndex],
+        programs,
+        trainingDays: programs[currentProgramIndex].trainingDays,
         currentProgramIndex,
         currentTrainingDayIndex
     })
 }
 const mapDispatchToProps = (dispatch) => ({
-    toggleCompletedExerciseSet: (exerciseIndex, exerciseSetIndex) => {
-        dispatch(toggleCompletedExerciseSet(exerciseIndex, exerciseSetIndex))
-        dispatch(setExerciseStatus(exerciseIndex))
+    toggleCompletedExerciseSet: (programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex) => {
+        dispatch(toggleCompletedExerciseSet(programIndex, trainingDayIndex, exerciseIndex, exerciseSetIndex))
+        dispatch(setExerciseStatus(programIndex, trainingDayIndex, exerciseIndex))
+    },
+    setCurrentTrainingDay: (currentTrainingDayIndex) => {
+        dispatch(setCurrentTrainingDay(currentTrainingDayIndex))
     }
 })
 
-const TrainingDayView = connect(
+const ProgramView = connect(
     mapStateToProps,
     mapDispatchToProps
-)(TrainingDay)
+)(Program)
 
-export default TrainingDayView
+export default ProgramView

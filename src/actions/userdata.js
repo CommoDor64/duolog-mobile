@@ -34,24 +34,6 @@ function setUserData(userData) {
     })
 }
 
-const model = {
-    details: [
-        {
-            name: "Squat",
-            date: "some date",
-            status: "NOT_STARTED",
-            completed: false,
-            sets: [
-                { "intensity": 80, "metric": "%", "reps": 5, "completed": false },
-                { "intensity": 85, "metric": "%", "reps": 5, "completed": false },
-                { "intensity": 90, "metric": "%", "reps": 5, "completed": false },
-                { "intensity": 95, "metric": "%", "reps": 5, "completed": false },
-                { "intensity": 100, "metric": "%", "reps": 5, "completed": false }
-            ]
-        },
-    ]
-}
-
 function appendProgram(program) {
     return ({
         type: APPEND_PROGRAM,

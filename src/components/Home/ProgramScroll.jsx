@@ -11,7 +11,7 @@ function ProgramScroll(props) {
                     <TouchableRipple
                         onPress={() => {
                             props.setCurrentProgram(programIndex)
-                            props.navigation.navigate('TrainingDaysView', { programIndex })
+                            props.navigation.navigate('ProgramView', { programIndex })
                         }}
                     >
                         <Surface
