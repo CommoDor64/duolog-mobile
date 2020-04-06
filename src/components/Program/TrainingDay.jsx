@@ -5,7 +5,6 @@ import Exercise from './Exercise'
 import storage from '../../storage/storage';
 
 function Program(props) {
-    const { currentProgramIndex, currentTrainingDayIndex } = props
     const [trainingDay, setTrainingDay] = useState(props.trainingDay)
 
     // update storage on unmount
@@ -13,16 +12,17 @@ function Program(props) {
         return () => { storage.setUserData() }
     }, [])
 
-    const keyExtractor = (programIndex, trainingDayIndex, exerciseIndex) =>
-        `program-${programIndex}-trainingDay-${trainingDayIndex}-exercise-${exerciseIndex}`
+    const keyExtractor = (programIndex, trainingDayIndex, exerciseIndex) => {
+        return `program-${programIndex}-trainingDay-${trainingDayIndex}-exercise-${exerciseIndex}`
+    }
 
-    const TrainingDayRender = ({ item: exercise, index: exerciseIndex }) =>
+    const exerciesesRender = ({ item: exercise, index: exerciseIndex }) =>
         <Exercise
             key={`exercise-${exercise}-${exerciseIndex}`}
             exerciseIndex={exerciseIndex}
             exercise={exercise}
             expanded={false}
-            toggleCompletedExerciseSet={(exerciseSetIndex) => {
+            toggleCompletedExerciseSet={(exerciseIndex, exerciseSetIndex) => {
                 props.toggleCompletedExerciseSet(
                     exerciseIndex,
                     exerciseSetIndex)
@@ -34,8 +34,8 @@ function Program(props) {
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={trainingDay.exercises}
-                renderItem={TrainingDayRender}
-                keyExtractor={(_item, index) => keyExtractor(currentProgramIndex, currentTrainingDayIndex, index)}
+                renderItem={exerciesesRender}
+                keyExtractor={(_item, index) => keyExtractor(props.currentProgramIndex, props.currentTrainingDayIndex, index)}
             />
         </SafeAreaView>
     );
