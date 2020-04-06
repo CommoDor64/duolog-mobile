@@ -1,27 +1,33 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import { List, Surface } from 'react-native-paper'
 import { exerciseStatus } from '../../constants/contants'
 
 function TrainingDays(props) {
-    const { currentProgramIndex, trainingDays } = props
+    const keyExtractor = (programIndex, trainingDayIndex) =>
+        `program-${programIndex}-trainingDay-${trainingDayIndex}`
 
+    const trainingDayRender = ({ item: trainingDay, index: trainingDayIndex }) => (
+        <Surface style={styles.item}>
+            <List.Item
+                key={`trainingDay-item-${props.currentProgramIndex}-${trainingDayIndex}`}
+                title={trainingDay.day}
+                description={exerciseStatus[trainingDay.status].text}
+                onPress={() => {
+                    props.setCurrentTrainingDay(trainingDayIndex)
+                    props.navigation.navigate('TrainingDayView', { trainingDayIndex })
+                }}
+            />
+        </Surface>
+    )
     return (
-        <View>
-            {trainingDays.map((trainingDay, trainingDayIndex) => (
-                <Surface style={styles.item}>
-                    <List.Item
-                        key={`trainingDay-item-${currentProgramIndex}-${trainingDayIndex}`}
-                        title={trainingDay.day}
-                        description={exerciseStatus[trainingDay.status].text}
-                        onPress={() => {
-                            props.setCurrentTrainingDay(trainingDayIndex)
-                            props.navigation.navigate('TrainingDayView', { trainingDayIndex })
-                        }}
-                    />
-                </Surface>
-            ))}
-        </View>
+        <SafeAreaView>
+            <FlatList
+                data={props.trainingDays}
+                renderItem={trainingDayRender}
+                keyExtractor={(_item, index) => keyExtractor(props.currentProgramIndex, index)}
+            />
+        </SafeAreaView>
     );
 }
 

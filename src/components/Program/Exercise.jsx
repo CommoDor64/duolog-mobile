@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { DataTable, List, Surface, Checkbox, TextInput } from 'react-native-paper';
 import { exerciseStatus } from '../../constants/contants'
-
+import ExerciseSet from './ExerciseSet'
 
 function Exercise(props) {
     const [exercise, setExercise] = useState(props.exercise)
@@ -31,7 +31,7 @@ function Exercise(props) {
                             unit={exerciseSet.unit}
                             reps={exerciseSet.reps}
                             toggleCompletedExerciseSet={() => {
-                                props.toggleCompletedExerciseSet(exerciseSetIndex)
+                                props.toggleCompletedExerciseSet(props.exerciseIndex, exerciseSetIndex)
                                 setStatus(props.exercise.status)
                             }}
                         />))}
@@ -46,25 +46,6 @@ function Exercise(props) {
             </List.Accordion>
         </Surface>
     );
-}
-
-
-function ExerciseSet(props) {
-    const { exerciseSetIndex, intensity, unit, reps } = props
-    const [completed, setCompleted] = useState(props.completed)
-    return (
-        <DataTable.Row key={`set-data-row-${Date.now()}-${exerciseSetIndex}`}>
-            <DataTable.Cell>{`${intensity}${unit}`}</DataTable.Cell>
-            <DataTable.Cell>{reps}</DataTable.Cell>
-            <Checkbox.Android
-                status={completed ? 'checked' : 'unchecked'}
-                onPress={() => {
-                    setCompleted(!completed)
-                    props.toggleCompletedExerciseSet()
-                }}
-                color='#6200ee'
-            />
-        </DataTable.Row >)
 }
 const styles = StyleSheet.create({
     item: {
