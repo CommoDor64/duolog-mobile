@@ -4,7 +4,7 @@ import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import Exercise from './Exercise'
 import storage from '../../storage/storage';
 
-function Program(props) {
+function TrainingDay(props) {
     const [trainingDay, setTrainingDay] = useState(props.trainingDay)
 
     // update storage on unmount
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Program
+export default TrainingDay

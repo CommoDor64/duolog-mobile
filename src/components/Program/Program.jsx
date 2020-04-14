@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import { List, Surface } from 'react-native-paper'
 import { exerciseStatus } from '../../constants/contants'
 
-function TrainingDays(props) {
+function Program(props) {
     const keyExtractor = (programIndex, trainingDayIndex) =>
         `program-${programIndex}-trainingDay-${trainingDayIndex}`
 
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TrainingDays
+export default Program
